@@ -2,6 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
+using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Threading;
 
@@ -308,5 +309,56 @@ namespace SeleniumCompleteMSTest
             driver.Quit();
         }
 
+        [TestMethod]
+        public void DifferenceBetweenFindElementAndElements() //Chapter 16
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Url = "http://ankpro.com/Home/Training";
+           // IWebElement element = driver.FindElement(By.Id("sample"));
+          //  Console.WriteLine(element);
+
+            ReadOnlyCollection<IWebElement> elements = driver.FindElements(By.Id("sample"));
+            Console.WriteLine(elements.Count);
+            IWebElement element = driver.FindElement(By.TagName("h2"));
+           Console.WriteLine(element.Text);
+
+            elements = driver.FindElements(By.TagName("h2"));
+            Console.WriteLine(elements.Count);
+            element = driver.FindElement(By.TagName("tr"));
+            Console.WriteLine(element.Text);
+            elements = driver.FindElements(By.TagName("tr"));
+            Console.WriteLine(elements.Count);
+            foreach (var item in elements)
+            {
+                Console.WriteLine(item.Text);
+            }
+            Thread.Sleep(2000);
+            driver.Quit();
+
+        }
+
+        [TestMethod]
+        public void CountCheckUnchecked() //Chapter 17
+        {
+            IWebDriver driver = new ChromeDriver();
+            //Usage:driver.FindElement(By.XPath("//input[@type='checkbox']")).Selected;
+            driver.Url = "http://uitestpractice.com/Students/Form";
+            driver.FindElement(By.XPath("//input[@value='dance']")).Click();
+            driver.FindElement(By.XPath("//input[@value='cricket']")).Click();
+            ReadOnlyCollection <IWebElement> webElements= driver.FindElements(By.XPath("//input[@type='checkbox']"));
+            int checkedCount= 0;
+            int uncheckedCount= 0;
+            foreach(var item in webElements)
+            {
+                if (item.Selected == true)
+                    checkedCount++;
+                else
+                    uncheckedCount++;
+            }
+            Console.WriteLine("Checked " + checkedCount);
+            Console.WriteLine("UnChecked " + uncheckedCount);
+            Thread.Sleep(2000);
+            driver.Quit();
+        }
     }
 }
