@@ -339,6 +339,7 @@ namespace SeleniumCompleteMSTest
 
         [TestMethod]
         public void CountCheckUnchecked() //Chapter 17
+
         {
             IWebDriver driver = new ChromeDriver();
             //Usage:driver.FindElement(By.XPath("//input[@type='checkbox']")).Selected;
@@ -357,6 +358,19 @@ namespace SeleniumCompleteMSTest
             }
             Console.WriteLine("Checked " + checkedCount);
             Console.WriteLine("UnChecked " + uncheckedCount);
+            Thread.Sleep(2000);
+            driver.Quit();
+        }
+
+        [TestMethod]
+        public void NewLineSendKeys() //Chapter 18
+
+        {
+            IWebDriver driver = new ChromeDriver();
+            
+            driver.Url = "http://uitestpractice.com/Students/Form";
+            driver.FindElement(By.Id("comment")).SendKeys("Good \n hello \t morning");
+
             Thread.Sleep(2000);
             driver.Quit();
         }
