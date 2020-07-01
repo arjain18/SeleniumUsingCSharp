@@ -399,5 +399,21 @@ namespace SeleniumCompleteMSTest
             Thread.Sleep(2000);
             driver.Quit();
         }
+
+        [TestMethod]
+        public void SelectDropDownBootStrap() //Chapter 21
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Url = "http://uitestpractice.com/Students/Select";
+            driver.FindElement(By.Id("dropdownMenu1")).Click();
+            Thread.Sleep(2000);
+            driver.FindElement(By.XPath("//a[text()='India']")).Click();
+            Thread.Sleep(2000);
+            String str = driver.FindElement(By.Id("dropdownMenu1")).Text;
+            Thread.Sleep(2000);
+            Console.WriteLine(str);
+            Thread.Sleep(2000);
+            driver.Quit();
+        }
     }
 }
