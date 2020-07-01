@@ -1,7 +1,9 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Threading;
@@ -371,6 +373,29 @@ namespace SeleniumCompleteMSTest
             driver.Url = "http://uitestpractice.com/Students/Form";
             driver.FindElement(By.Id("comment")).SendKeys("Good \n hello \t morning");
 
+            Thread.Sleep(2000);
+            driver.Quit();
+        }
+
+        [TestMethod]
+        public void SelectDropDown() //Chapter 20
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Url = "http://uitestpractice.com/Students/Select";
+            IWebElement element= driver.FindElement(By.Id("countriesSingle"));
+            SelectElement selectElement = new SelectElement(element);
+            IList<IWebElement> elements= selectElement.Options;
+            Console.WriteLine("Sinle dropdown "+ selectElement.IsMultiple);
+            selectElement.SelectByText("India");
+            foreach( var item in elements)
+            {
+                Console.WriteLine(item.Text);
+
+            }
+            element = driver.FindElement(By.Id("countriesMultiple"));
+            selectElement = new SelectElement(element);
+            Console.WriteLine("Multi select :"+ selectElement.IsMultiple);
+            selectElement.SelectByIndex(2);
             Thread.Sleep(2000);
             driver.Quit();
         }
