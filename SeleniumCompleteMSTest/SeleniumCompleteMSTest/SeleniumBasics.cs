@@ -1,6 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
@@ -385,7 +386,7 @@ namespace SeleniumCompleteMSTest
             IWebElement element= driver.FindElement(By.Id("countriesSingle"));
             SelectElement selectElement = new SelectElement(element);
             IList<IWebElement> elements= selectElement.Options;
-            Console.WriteLine("Sinle dropdown "+ selectElement.IsMultiple);
+            Console.WriteLine("Single dropdown "+ selectElement.IsMultiple);
             selectElement.SelectByText("India");
             foreach( var item in elements)
             {
@@ -412,6 +413,45 @@ namespace SeleniumCompleteMSTest
             String str = driver.FindElement(By.Id("dropdownMenu1")).Text;
             Thread.Sleep(2000);
             Console.WriteLine(str);
+            Thread.Sleep(2000);
+            driver.Quit();
+        }
+
+        [TestMethod]
+        public void ActionsMoveToElement() //Chapter 23
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
+            driver.Url = "http://uitestpractice.com/Students/Actions";
+            
+            Actions action = new Actions(driver);
+            action.MoveToElement(driver.FindElement(By.Id("div2"))).Build().Perform();  // build and perform is must in actions
+
+            action.MoveToElement(driver.FindElement(By.Id("div2")),20,20).ContextClick().Build().Perform();
+
+            action.MoveToElement(driver.FindElement(By.Id("div2")), 20, 20,MoveToElementOffsetOrigin.Center).ContextClick().Build().Perform();
+            Thread.Sleep(2000);
+            driver.Quit();
+        }
+
+        [TestMethod]
+        public void ActionsClick() //Chapter 24
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
+            driver.Url = "http://uitestpractice.com/Students/Actions";
+            //driver.FindElement(By.Name("click")).Click();
+           Actions action = new Actions(driver);
+            /* action.MoveToElement(driver.FindElement(By.Name("click")))
+                  .Click()
+                  .Build()
+                  .Perform();*/
+
+            //Another Way
+            action.Click(driver.FindElement(By.Name("click")))
+               .Build()
+               .Perform();
+
             Thread.Sleep(2000);
             driver.Quit();
         }
