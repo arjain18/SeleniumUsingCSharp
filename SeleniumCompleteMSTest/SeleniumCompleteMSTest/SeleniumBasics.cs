@@ -455,5 +455,41 @@ namespace SeleniumCompleteMSTest
             Thread.Sleep(2000);
             driver.Quit();
         }
+
+        [TestMethod]
+        public void ActionsContextMenu() //Chapter 27
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
+            driver.Url = "http://uitestpractice.com/Students/Actions";
+            
+            Actions action = new Actions(driver);
+            /* action.MoveToElement(driver.FindElement(By.Name("four")))
+                 .ContextClick()
+                .Build()
+                .Perform();
+            */
+            action.ContextClick(driver.FindElement(By.Name("four")))
+                .Build()
+                .Perform();
+            Thread.Sleep(2000);
+            driver.Quit();
+        }
+
+        [TestMethod]
+        public void ActionsMoveToOffset() //Chapter 28
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
+            driver.Url = "http://uitestpractice.com/Students/Actions";
+
+            Actions action = new Actions(driver);
+             action.MoveByOffset(200,200)
+                 .ContextClick()
+                .Build()
+                .Perform();
+            Thread.Sleep(2000);
+            driver.Quit();
+        }
     }
 }
