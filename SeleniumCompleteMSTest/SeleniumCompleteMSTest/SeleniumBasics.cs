@@ -491,5 +491,22 @@ namespace SeleniumCompleteMSTest
             Thread.Sleep(2000);
             driver.Quit();
         }
+
+        [TestMethod]
+        public void ActionsDragnDrop() //Chapter 29
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
+            driver.Url = "http://uitestpractice.com/Students/Actions";
+
+            Actions action = new Actions(driver);
+            action.DragAndDrop(driver.FindElement(By.Id("draggable")),driver.FindElement(By.Id("droppable")))
+               .Build()
+               .Perform();
+            // can also be dine using offset methord 
+            //action.DragAndDropToOffset();
+            Thread.Sleep(2000);
+            driver.Quit();
+        }
     }
 }
