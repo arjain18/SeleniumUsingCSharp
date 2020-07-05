@@ -426,6 +426,7 @@ namespace SeleniumCompleteMSTest
             
             Actions action = new Actions(driver);
             action.MoveToElement(driver.FindElement(By.Id("div2"))).Build().Perform();  // build and perform is must in actions
+            //build should be use if multiple actions are involved otherwise directly use perform.
 
             action.MoveToElement(driver.FindElement(By.Id("div2")),20,20).ContextClick().Build().Perform();
 
@@ -505,6 +506,49 @@ namespace SeleniumCompleteMSTest
                .Perform();
             // can also be dine using offset methord 
             //action.DragAndDropToOffset();
+            Thread.Sleep(2000);
+            driver.Quit();
+        }
+
+        [TestMethod]
+        public void ActionsKeyUpDown() //Chapter 31
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
+            driver.Url = "http://uitestpractice.com/Students/Actions";
+
+            Actions action = new Actions(driver);
+            action.KeyDown(Keys.Control)
+                .Click(driver.FindElement(By.Name("one")))
+                .Click(driver.FindElement(By.Name("four")))
+                .KeyUp(Keys.Control)
+                .Build().Perform();
+
+            /*another way
+             *  .KeyDown(driver.FindElement(By.Name("one")), Keys.Control)
+                 .KeyDown(driver.FindElement(By.Name("six")), Keys.Control)
+                 .KeyUp(driver.FindElement(By.Name("eleven")), Keys.Control)
+                 .Build()
+                 .Perform();
+            */
+
+            Thread.Sleep(2000);
+            driver.Quit();
+        }
+
+        [TestMethod]
+        public void ActionsSendKey() //Chapter 32
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
+            driver.Url = "http://uitestpractice.com/Students/Actions";
+
+            Actions action = new Actions(driver);
+            action.SendKeys(Keys.End).Perform();
+            Thread.Sleep(2000);
+            action.SendKeys(Keys.Home).Perform();
+            Thread.Sleep(2000);
+            action.SendKeys(driver.FindElement(By.Name("click")), Keys.Enter).Perform();
             Thread.Sleep(2000);
             driver.Quit();
         }
