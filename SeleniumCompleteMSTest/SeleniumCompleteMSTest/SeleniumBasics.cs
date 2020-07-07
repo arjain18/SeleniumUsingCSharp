@@ -552,5 +552,79 @@ namespace SeleniumCompleteMSTest
             Thread.Sleep(2000);
             driver.Quit();
         }
+
+        [TestMethod]
+        public void ActionsSendKeyFillForm() //Chapter 33
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
+            driver.Url = "http://ankpro.com/Account/Register";
+
+            Actions action = new Actions(driver);
+            action.Click(driver.FindElement(By.Id("Email")))
+                .SendKeys("a@a.com" + Keys.Tab)
+                .SendKeys("1234" + Keys.Tab)
+                .SendKeys("1234" + Keys.Tab)
+                .Build()
+                .Perform();
+
+            Thread.Sleep(2000);
+            driver.Quit();
+        }
+
+        [TestMethod]
+        public void ActionsSendKeyClear() //Chapter 34
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
+            driver.Url = "http://ankpro.com/Account/Register";
+
+            Actions action = new Actions(driver);
+           driver.FindElement(By.Id("Email")).SendKeys("a@a.com");
+            Thread.Sleep(2000);
+            action
+             .Click(driver.FindElement(By.Id("Email")))
+             .KeyDown(Keys.Control)
+             .SendKeys("a")
+             .KeyUp(Keys.Control)
+             .SendKeys(Keys.Backspace)
+             .Build()
+             .Perform();
+
+            Thread.Sleep(2000);
+            driver.Quit();
+        }
+
+        [TestMethod]
+        public void ThreadWait() //Chapter 35
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
+            //Implicit Wait
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(12000);
+            driver.Url = "http://uitestpractice.com/Students/Contact";
+            driver.FindElement(By.PartialLinkText("This")).Click();
+            String result = driver.FindElement(By.ClassName("ContactUs")).Text;
+
+            Console.WriteLine(result.Contains("Python"));
+            Thread.Sleep(2000);
+            driver.Quit();
+        }
+
+        [TestMethod]
+        public void ExplicitWait() //Chapter 36
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
+            //Implicit Wait
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(12000);
+            driver.Url = "http://uitestpractice.com/Students/Contact";
+            driver.FindElement(By.PartialLinkText("This")).Click();
+            String result = driver.FindElement(By.ClassName("ContactUs")).Text;
+
+            Console.WriteLine(result.Contains("Python"));
+            Thread.Sleep(2000);
+            driver.Quit();
+        }
     }
 }
