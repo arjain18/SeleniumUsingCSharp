@@ -620,10 +620,12 @@ namespace SeleniumCompleteMSTest
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(12000);
             driver.Url = "http://uitestpractice.com/Students/Contact";
             driver.FindElement(By.PartialLinkText("This")).Click();
-            String result = driver.FindElement(By.ClassName("ContactUs")).Text;
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(1200));
+            wait.Until(ExpectedConditions.ElementExists(By.ClassName("ContactUs")));
 
-            Console.WriteLine(result.Contains("Python"));
-            Thread.Sleep(2000);
+            string result = driver.FindElement(By.ClassName("ContactUs")).Text;
+            Assert.IsTrue(result.Contains("Python"));
+
             driver.Quit();
         }
     }
