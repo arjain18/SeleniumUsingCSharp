@@ -6,6 +6,7 @@ using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Threading;
 
@@ -620,12 +621,52 @@ namespace SeleniumCompleteMSTest
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(12000);
             driver.Url = "http://uitestpractice.com/Students/Contact";
             driver.FindElement(By.PartialLinkText("This")).Click();
+            
+            //explicit wait
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(1200));
             wait.Until(ExpectedConditions.ElementExists(By.ClassName("ContactUs")));
 
             string result = driver.FindElement(By.ClassName("ContactUs")).Text;
             Assert.IsTrue(result.Contains("Python"));
 
+            driver.Quit();
+        }
+
+        [TestMethod]
+        public void PageLoad() //Chapter 38
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
+            //page load
+            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(20);
+            driver.Url = "http://uitestpractice.com/Students/Contact";
+
+            driver.Quit();
+        }
+
+        [TestMethod]
+        public void MixingofImplicitandExplicitWait() //Chapter 39
+        {
+            IWebDriver driver = new ChromeDriver();
+            
+            // Implicit Wait
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            driver.Url = "http://uitestpractice.com/Students/Contact";
+            Stopwatch watch = null;
+            try
+            {
+                watch = Stopwatch.StartNew();
+                //Explicit wait
+                WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
+                wait.Until(ExpectedConditions.ElementExists(By.Id("something"))).Click();
+                driver.FindElement(By.Id("something")).Click(); //raw data to check wait when Implicit wait is used
+            }
+            catch(Exception e)
+            {
+                watch.Stop();
+                Console.WriteLine(e);
+                Console.WriteLine(watch.ElapsedMilliseconds);
+            }
             driver.Quit();
         }
     }
