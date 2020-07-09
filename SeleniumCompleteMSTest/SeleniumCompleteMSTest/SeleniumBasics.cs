@@ -669,5 +669,30 @@ namespace SeleniumCompleteMSTest
             }
             driver.Quit();
         }
+
+        [TestMethod]
+        public void CustomExpectedCondition() //Chapter 40
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
+            // Implicit Wait
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            driver.Url = "http://uitestpractice.com/Students/Contact";
+            driver.FindElement(By.PartialLinkText("This")).Click();
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
+            wait.Until<IWebElement>(WaitFor);
+            Console.WriteLine(driver.FindElement(By.ClassName("ContactUs")).Text);
+            driver.Quit();
+        }
+
+        private IWebElement WaitFor(IWebDriver driver)
+        {
+            IWebElement element = driver.FindElement(By.ClassName("ContactUs"));
+            if (element.Displayed && element.Enabled && element.Text.Contains("C#"))
+            {
+                return element;
+            }
+            return null;
+        }
     }
 }
