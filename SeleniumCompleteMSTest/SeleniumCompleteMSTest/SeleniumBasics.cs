@@ -694,5 +694,32 @@ namespace SeleniumCompleteMSTest
             }
             return null;
         }
+
+        [TestMethod]
+        public void HandleAlerts() //Chapter 41
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
+            driver.Url = "http://uitestpractice.com/Students/Switchto";
+            Thread.Sleep(2000);
+            driver.FindElement(By.Id("alert")).Click();
+            String str = driver.SwitchTo().Alert().Text;
+            Console.WriteLine(str);
+            driver.SwitchTo().Alert().Accept();
+            driver.FindElement(By.Id("prompt")).Click();
+            driver.SwitchTo().Alert().SendKeys("ashish");
+            Thread.Sleep(2000);
+            driver.SwitchTo().Alert().Accept();
+            Thread.Sleep(2000);
+            driver.FindElement(By.Id("prompt")).Click();
+            driver.SwitchTo().Alert().SendKeys("ashish");
+            Thread.Sleep(2000);
+            driver.SwitchTo().Alert().Dismiss();
+            Thread.Sleep(2000);
+            driver.FindElement(By.Id("confirm")).Click();
+            driver.SwitchTo().Alert().Dismiss();
+            Thread.Sleep(2000);
+            driver.Quit();
+        }
     }
 }
