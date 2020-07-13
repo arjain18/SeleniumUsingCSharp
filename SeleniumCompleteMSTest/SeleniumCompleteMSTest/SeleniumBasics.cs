@@ -721,5 +721,50 @@ namespace SeleniumCompleteMSTest
             Thread.Sleep(2000);
             driver.Quit();
         }
+        [TestMethod]
+        public void SwitchFrames() //Chapter 42
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
+            driver.Url = "http://uitestpractice.com/Students/Switchto";
+            driver.SwitchTo().Frame("iframe_a").FindElement(By.Id("name")).SendKeys("abc");
+            driver.SwitchTo().DefaultContent();
+            driver.FindElement(By.LinkText("Opens in a new window")).Click();
+            Thread.Sleep(2000);
+            driver.Quit();
+        }
+
+        [TestMethod]
+        public void MultipleWindow() //Chapter 43
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
+            driver.Url = "http://uitestpractice.com/Students/Switchto";
+            driver.FindElement(By.LinkText("Opens in a new window")).Click();
+            Console.WriteLine("Number of windows opened by selenium : " + driver.WindowHandles.Count);
+            foreach (var item in driver.WindowHandles)
+            {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine("Current window handle : " + driver.CurrentWindowHandle);
+            // switching a newly opened window and trying get an element from that window
+            driver.SwitchTo().Window(driver.WindowHandles[1]);
+            Console.WriteLine(driver.FindElement(By.Id("draggable")).Text);
+            Console.WriteLine("Current window handle : " + driver.CurrentWindowHandle);
+            Console.WriteLine("After close");
+            driver.Close();
+
+            //close the newly opened window
+            Console.WriteLine("Number of windows opened by selenium : " + driver.WindowHandles.Count);
+            foreach (var item in driver.WindowHandles)
+            {
+                Console.WriteLine(item);
+            }
+            Thread.Sleep(2000);
+            driver.SwitchTo().Window(driver.WindowHandles[0]);
+            Console.WriteLine("Current window handle : " + driver.CurrentWindowHandle);
+            Thread.Sleep(2000);
+            driver.Quit();
+        }
     }
 }
