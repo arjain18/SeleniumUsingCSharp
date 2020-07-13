@@ -91,7 +91,7 @@ namespace SeleniumCompleteMSTest
             var paragraph = driver.FindElements(By.TagName("p"));
             Console.WriteLine(paragraph);
             Console.WriteLine("Count of p" + paragraph.Count);
-            foreach( var item in paragraph)
+            foreach (var item in paragraph)
             {
                 Console.WriteLine(item.Text);
                 Console.WriteLine(item);
@@ -110,7 +110,7 @@ namespace SeleniumCompleteMSTest
             IWebDriver driver = new ChromeDriver();
             driver.Url = "http://ankpro.com/Account/Login";
             int count = driver.FindElements(By.CssSelector("*")).Count; //wild card *, select all elements
-            Console.WriteLine("Number of elements found "+ count);
+            Console.WriteLine("Number of elements found " + count);
             count = driver.FindElements(By.CssSelector("#Email")).Count; //# select Id
             Console.WriteLine("Number of #Email found " + count);
             driver.FindElement(By.CssSelector("#Email")).SendKeys("a@a.com");
@@ -138,8 +138,8 @@ namespace SeleniumCompleteMSTest
             bool selectedCheckbox = driver.FindElement(By.CssSelector("input[type='checkbox']:checked")).Selected;            // Element checked CSS selector
             Console.WriteLine("checked :: " + selectedCheckbox);
 
-            driver.FindElement(By.Id("RememberMe")).Click(); 
-            selectedCheckbox = driver.FindElement(By.Id("RememberMe")).Selected;         
+            driver.FindElement(By.Id("RememberMe")).Click();
+            selectedCheckbox = driver.FindElement(By.Id("RememberMe")).Selected;
             Console.WriteLine("checked :: " + selectedCheckbox);
             Thread.Sleep(2000);
             driver.Quit();
@@ -154,12 +154,12 @@ namespace SeleniumCompleteMSTest
             Console.WriteLine(str);
 
             int count = driver.FindElements(By.XPath("//*")).Count; //get all elements
-            Console.WriteLine("All elements count "+ count);
+            Console.WriteLine("All elements count " + count);
             count = driver.FindElements(By.XPath(".//input")).Count; //Tag name .//TagName
             Console.WriteLine("input count " + count);
             //Using attribute TagName[@attribute=‘Value’]
             //*[@id="Email"] || .//input[@id='Email']
-           driver.FindElement(By.XPath("//*[@id='Email']")).SendKeys("a");
+            driver.FindElement(By.XPath("//*[@id='Email']")).SendKeys("a");
 
             //XPath using multiple attributes :
             //Syntax://tagname[@attribute1=’value1’] [@attribute2=’value2’]’ 
@@ -209,13 +209,13 @@ namespace SeleniumCompleteMSTest
             //This XPath will select an element whose tagname is input, attribute is id  and value starts with Rem
             driver.Navigate().GoToUrl("http://ankpro.com/Account/Login");
             driver.FindElement(By.XPath(".//input[starts-with(@id,'Rem')]")).Click();
-            
+
             //XPath using contains() function : 
             //Syntax://tagname[contains(@attribute,’value’)]
             //usage : driver.FindElement(By.XPath(“.//input[contains(@id,’Me’)]”))
             //This XPath will select an element whose tagname is input, attribute is id  and value that contains Me
             driver.FindElement(By.XPath(".//input[contains(@id,'Rem')]")).Click();
-           
+
             //XPath using not() function :
             //Usage : driver.FindElement(By.XPath(“.//input[@type='checkbox' and  not(@checked)]”)) 
             //This XPath will select checkboxes which do not have the attribute checked.
@@ -318,13 +318,13 @@ namespace SeleniumCompleteMSTest
         {
             IWebDriver driver = new ChromeDriver();
             driver.Url = "http://ankpro.com/Home/Training";
-           // IWebElement element = driver.FindElement(By.Id("sample"));
-          //  Console.WriteLine(element);
+            // IWebElement element = driver.FindElement(By.Id("sample"));
+            //  Console.WriteLine(element);
 
             ReadOnlyCollection<IWebElement> elements = driver.FindElements(By.Id("sample"));
             Console.WriteLine(elements.Count);
             IWebElement element = driver.FindElement(By.TagName("h2"));
-           Console.WriteLine(element.Text);
+            Console.WriteLine(element.Text);
 
             elements = driver.FindElements(By.TagName("h2"));
             Console.WriteLine(elements.Count);
@@ -350,10 +350,10 @@ namespace SeleniumCompleteMSTest
             driver.Url = "http://uitestpractice.com/Students/Form";
             driver.FindElement(By.XPath("//input[@value='dance']")).Click();
             driver.FindElement(By.XPath("//input[@value='cricket']")).Click();
-            ReadOnlyCollection <IWebElement> webElements= driver.FindElements(By.XPath("//input[@type='checkbox']"));
-            int checkedCount= 0;
-            int uncheckedCount= 0;
-            foreach(var item in webElements)
+            ReadOnlyCollection<IWebElement> webElements = driver.FindElements(By.XPath("//input[@type='checkbox']"));
+            int checkedCount = 0;
+            int uncheckedCount = 0;
+            foreach (var item in webElements)
             {
                 if (item.Selected == true)
                     checkedCount++;
@@ -371,7 +371,7 @@ namespace SeleniumCompleteMSTest
 
         {
             IWebDriver driver = new ChromeDriver();
-            
+
             driver.Url = "http://uitestpractice.com/Students/Form";
             driver.FindElement(By.Id("comment")).SendKeys("Good \n hello \t morning");
 
@@ -384,19 +384,19 @@ namespace SeleniumCompleteMSTest
         {
             IWebDriver driver = new ChromeDriver();
             driver.Url = "http://uitestpractice.com/Students/Select";
-            IWebElement element= driver.FindElement(By.Id("countriesSingle"));
+            IWebElement element = driver.FindElement(By.Id("countriesSingle"));
             SelectElement selectElement = new SelectElement(element);
-            IList<IWebElement> elements= selectElement.Options;
-            Console.WriteLine("Single dropdown "+ selectElement.IsMultiple);
+            IList<IWebElement> elements = selectElement.Options;
+            Console.WriteLine("Single dropdown " + selectElement.IsMultiple);
             selectElement.SelectByText("India");
-            foreach( var item in elements)
+            foreach (var item in elements)
             {
                 Console.WriteLine(item.Text);
 
             }
             element = driver.FindElement(By.Id("countriesMultiple"));
             selectElement = new SelectElement(element);
-            Console.WriteLine("Multi select :"+ selectElement.IsMultiple);
+            Console.WriteLine("Multi select :" + selectElement.IsMultiple);
             selectElement.SelectByIndex(2);
             Thread.Sleep(2000);
             driver.Quit();
@@ -424,14 +424,14 @@ namespace SeleniumCompleteMSTest
             IWebDriver driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
             driver.Url = "http://uitestpractice.com/Students/Actions";
-            
+
             Actions action = new Actions(driver);
             action.MoveToElement(driver.FindElement(By.Id("div2"))).Build().Perform();  // build and perform is must in actions
             //build should be use if multiple actions are involved otherwise directly use perform.
 
-            action.MoveToElement(driver.FindElement(By.Id("div2")),20,20).ContextClick().Build().Perform();
+            action.MoveToElement(driver.FindElement(By.Id("div2")), 20, 20).ContextClick().Build().Perform();
 
-            action.MoveToElement(driver.FindElement(By.Id("div2")), 20, 20,MoveToElementOffsetOrigin.Center).ContextClick().Build().Perform();
+            action.MoveToElement(driver.FindElement(By.Id("div2")), 20, 20, MoveToElementOffsetOrigin.Center).ContextClick().Build().Perform();
             Thread.Sleep(2000);
             driver.Quit();
         }
@@ -443,7 +443,7 @@ namespace SeleniumCompleteMSTest
             driver.Manage().Window.Maximize();
             driver.Url = "http://uitestpractice.com/Students/Actions";
             //driver.FindElement(By.Name("click")).Click();
-           Actions action = new Actions(driver);
+            Actions action = new Actions(driver);
             /* action.MoveToElement(driver.FindElement(By.Name("click")))
                   .Click()
                   .Build()
@@ -464,7 +464,7 @@ namespace SeleniumCompleteMSTest
             IWebDriver driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
             driver.Url = "http://uitestpractice.com/Students/Actions";
-            
+
             Actions action = new Actions(driver);
             /* action.MoveToElement(driver.FindElement(By.Name("four")))
                  .ContextClick()
@@ -486,10 +486,10 @@ namespace SeleniumCompleteMSTest
             driver.Url = "http://uitestpractice.com/Students/Actions";
 
             Actions action = new Actions(driver);
-             action.MoveByOffset(200,200)
-                 .ContextClick()
-                .Build()
-                .Perform();
+            action.MoveByOffset(200, 200)
+                .ContextClick()
+               .Build()
+               .Perform();
             Thread.Sleep(2000);
             driver.Quit();
         }
@@ -502,7 +502,7 @@ namespace SeleniumCompleteMSTest
             driver.Url = "http://uitestpractice.com/Students/Actions";
 
             Actions action = new Actions(driver);
-            action.DragAndDrop(driver.FindElement(By.Id("draggable")),driver.FindElement(By.Id("droppable")))
+            action.DragAndDrop(driver.FindElement(By.Id("draggable")), driver.FindElement(By.Id("droppable")))
                .Build()
                .Perform();
             // can also be dine using offset methord 
@@ -581,7 +581,7 @@ namespace SeleniumCompleteMSTest
             driver.Url = "http://ankpro.com/Account/Register";
 
             Actions action = new Actions(driver);
-           driver.FindElement(By.Id("Email")).SendKeys("a@a.com");
+            driver.FindElement(By.Id("Email")).SendKeys("a@a.com");
             Thread.Sleep(2000);
             action
              .Click(driver.FindElement(By.Id("Email")))
@@ -621,7 +621,7 @@ namespace SeleniumCompleteMSTest
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(12000);
             driver.Url = "http://uitestpractice.com/Students/Contact";
             driver.FindElement(By.PartialLinkText("This")).Click();
-            
+
             //explicit wait
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(1200));
             wait.Until(ExpectedConditions.ElementExists(By.ClassName("ContactUs")));
@@ -648,7 +648,7 @@ namespace SeleniumCompleteMSTest
         public void MixingofImplicitandExplicitWait() //Chapter 39
         {
             IWebDriver driver = new ChromeDriver();
-            
+
             // Implicit Wait
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             driver.Url = "http://uitestpractice.com/Students/Contact";
@@ -661,7 +661,7 @@ namespace SeleniumCompleteMSTest
                 wait.Until(ExpectedConditions.ElementExists(By.Id("something"))).Click();
                 driver.FindElement(By.Id("something")).Click(); //raw data to check wait when Implicit wait is used
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 watch.Stop();
                 Console.WriteLine(e);
@@ -766,5 +766,19 @@ namespace SeleniumCompleteMSTest
             Thread.Sleep(2000);
             driver.Quit();
         }
+        [TestMethod]
+        public void Modal() //Chapter 43
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
+            driver.Url = "http://uitestpractice.com/Students/Switchto";
+            Thread.Sleep(2000);
+            driver.FindElement(By.XPath("//button[contains(text(),'Launch modal')]")).Click();
+            Thread.Sleep(2000);
+            driver.FindElement(By.XPath("//button[@class='btn btn-primary']")).Click();
+            Thread.Sleep(2000);
+            driver.Quit();
+        }
     }
+
 }
