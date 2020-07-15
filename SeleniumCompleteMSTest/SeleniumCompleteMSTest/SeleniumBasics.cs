@@ -767,7 +767,7 @@ namespace SeleniumCompleteMSTest
             driver.Quit();
         }
         [TestMethod]
-        public void Modal() //Chapter 43
+        public void Modal() //Chapter 44
         {
             IWebDriver driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
@@ -776,6 +776,17 @@ namespace SeleniumCompleteMSTest
             driver.FindElement(By.XPath("//button[contains(text(),'Launch modal')]")).Click();
             Thread.Sleep(2000);
             driver.FindElement(By.XPath("//button[@class='btn btn-primary']")).Click();
+            Thread.Sleep(2000);
+            driver.Quit();
+        }
+
+        [TestMethod]
+        public void ScreenShot() //Chapter 46
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
+            driver.Url = "http://uitestpractice.com/Students/Switchto";
+            ((ITakesScreenshot)driver).GetScreenshot().SaveAsFile("test.png", ScreenshotImageFormat.Png);
             Thread.Sleep(2000);
             driver.Quit();
         }
