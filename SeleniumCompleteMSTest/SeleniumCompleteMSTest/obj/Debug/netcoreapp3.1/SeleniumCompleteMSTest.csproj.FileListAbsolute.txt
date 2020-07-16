@@ -89,8 +89,13 @@ C:\Users\arjai\Source\Repos\arjain18\SeleniumUsingCSharp\SeleniumCompleteMSTest\
 C:\Users\arjai\Source\Repos\arjain18\SeleniumUsingCSharp\SeleniumCompleteMSTest\SeleniumCompleteMSTest\obj\Debug\netcoreapp3.1\SeleniumCompleteMSTest.csprojAssemblyReference.cache
 C:\Users\arjai\Source\Repos\arjain18\SeleniumUsingCSharp\SeleniumCompleteMSTest\SeleniumCompleteMSTest\obj\Debug\netcoreapp3.1\SeleniumCompleteMSTest.AssemblyInfoInputs.cache
 C:\Users\arjai\Source\Repos\arjain18\SeleniumUsingCSharp\SeleniumCompleteMSTest\SeleniumCompleteMSTest\obj\Debug\netcoreapp3.1\SeleniumCompleteMSTest.AssemblyInfo.cs
-C:\Users\arjai\Source\Repos\arjain18\SeleniumUsingCSharp\SeleniumCompleteMSTest\SeleniumCompleteMSTest\obj\Debug\netcoreapp3.1\SeleniumCompleteMSTest.csproj.CoreCompileInputs.cache
 C:\Users\arjai\Source\Repos\arjain18\SeleniumUsingCSharp\SeleniumCompleteMSTest\SeleniumCompleteMSTest\obj\Debug\netcoreapp3.1\SeleniumCompleteMSTest.csproj.CopyComplete
 C:\Users\arjai\Source\Repos\arjain18\SeleniumUsingCSharp\SeleniumCompleteMSTest\SeleniumCompleteMSTest\obj\Debug\netcoreapp3.1\SeleniumCompleteMSTest.dll
 C:\Users\arjai\Source\Repos\arjain18\SeleniumUsingCSharp\SeleniumCompleteMSTest\SeleniumCompleteMSTest\obj\Debug\netcoreapp3.1\SeleniumCompleteMSTest.pdb
 C:\Users\arjai\Source\Repos\arjain18\SeleniumUsingCSharp\SeleniumCompleteMSTest\SeleniumCompleteMSTest\obj\Debug\netcoreapp3.1\SeleniumCompleteMSTest.genruntimeconfig.cache
+C:\Users\arjai\Source\Repos\arjain18\SeleniumUsingCSharp\SeleniumCompleteMSTest\SeleniumCompleteMSTest\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+C:\Users\arjai\Source\Repos\arjain18\SeleniumUsingCSharp\SeleniumCompleteMSTest\SeleniumCompleteMSTest\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+C:\Users\arjai\Source\Repos\arjain18\SeleniumUsingCSharp\SeleniumCompleteMSTest\SeleniumCompleteMSTest\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\arjai\Source\Repos\arjain18\SeleniumUsingCSharp\SeleniumCompleteMSTest\SeleniumCompleteMSTest\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\arjai\Source\Repos\arjain18\SeleniumUsingCSharp\SeleniumCompleteMSTest\SeleniumCompleteMSTest\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\arjai\Source\Repos\arjain18\SeleniumUsingCSharp\SeleniumCompleteMSTest\SeleniumCompleteMSTest\obj\Debug\netcoreapp3.1\SeleniumCompleteMSTest.csproj.CoreCompileInputs.cache

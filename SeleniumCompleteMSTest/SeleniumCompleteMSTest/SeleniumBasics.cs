@@ -790,6 +790,27 @@ namespace SeleniumCompleteMSTest
             Thread.Sleep(2000);
             driver.Quit();
         }
+
+        [TestMethod]
+        public void ScreenShotSpecificElement() //Chapter 47
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
+            driver.Url = "http://ankpro.com/";
+            TakesScreenshot(driver, driver.FindElement(By.ClassName("jumbotron")));
+            Thread.Sleep(2000);
+            
+            driver.Quit();
+        }
+        public void TakesScreenshot(IWebDriver driver, IWebElement element)  //method to take screenshot
+        {
+            string fileName = DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") + ".jpg";
+            Byte[] byteArray = ((ITakesScreenshot)driver).GetScreenshot().AsByteArray;
+            Bitmap screenshot = new Bitmap(new System.IO.MemoryStream(byteArray));
+            Rectangle croppedImage = new Rectangle(element.Location.X, element.Location.Y, element.Size.Width, element.Size.Height);
+            screenshot = screenshot.Clone(croppedImage, screenshot.PixelFormat);
+            screenshot.Save(String.Format(fileName, ScreenshotImageFormat.Jpeg));
+        }
     }
 
 }
