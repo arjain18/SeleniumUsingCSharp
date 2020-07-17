@@ -2,6 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
+using OpenQA.Selenium.Support.Extensions;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
@@ -810,6 +811,22 @@ namespace SeleniumCompleteMSTest
             Rectangle croppedImage = new Rectangle(element.Location.X, element.Location.Y, element.Size.Width, element.Size.Height);
             screenshot = screenshot.Clone(croppedImage, screenshot.PixelFormat);
             screenshot.Save(String.Format(fileName, ScreenshotImageFormat.Jpeg));
+        }
+
+        [TestMethod]
+        public void JavaScriptExecutor() //Chapter 51
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
+            driver.Url = "http://www.ankpro.com";
+            ((IJavaScriptExecutor)driver).ExecuteScript("alert('Hello')"); //alert pop up
+            //((IJavaScriptExecutor)driver).ExecuteScript("history.go(0)"); //refresh the page
+            // driver.Url ="http://uitestpractice.com/Students/Form";
+            // ((IJavaScriptExecutor)driver).ExecuteScript("document.querySelectorAll('input[value = read]')[0].click()"); //handle check box
+            //To Get The Inner Text We can the inner text of page by using following code
+            //((IJavaScriptExecutor)driver).ExecuteScript("return document.documentElement.innerText;").ToString();
+            Thread.Sleep(2000);
+            driver.Quit();
         }
     }
 
