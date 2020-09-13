@@ -2,6 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
+using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.Extensions;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -787,7 +788,8 @@ namespace SeleniumCompleteMSTest
             IWebDriver driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
             driver.Url = "http://uitestpractice.com/Students/Switchto";
-            ((ITakesScreenshot)driver).GetScreenshot().SaveAsFile("test.png", ScreenshotImageFormat.Png);
+            ((ITakesScreenshot)driver).GetScreenshot().SaveAsFile("test.png", ScreenshotImageFormat.Png); //recomended way
+            //((RemoteWebDriver)driver).GetScreenshot().SaveAsFile("test.png", ScreenshotImageFormat.Png); //alternative
             Thread.Sleep(2000);
             driver.Quit();
         }
@@ -831,3 +833,4 @@ namespace SeleniumCompleteMSTest
     }
 
 }
+

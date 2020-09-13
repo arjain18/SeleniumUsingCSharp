@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\arjai\\Source\\Repos\\arjain18\\SeleniumUsingCSharp\\SeleniumCompleteMSTest\\SeleniumCompleteMSTest\\SeleniumCompleteMSTest.csproj": {}
+    "C:\\Users\\arjai\\source\\repos\\arjain18\\SeleniumUsingCSharp\\SeleniumCompleteMSTest\\SeleniumCompleteMSTest\\SeleniumCompleteMSTest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\arjai\\Source\\Repos\\arjain18\\SeleniumUsingCSharp\\SeleniumCompleteMSTest\\SeleniumCompleteMSTest\\SeleniumCompleteMSTest.csproj": {
+    "C:\\Users\\arjai\\source\\repos\\arjain18\\SeleniumUsingCSharp\\SeleniumCompleteMSTest\\SeleniumCompleteMSTest\\SeleniumCompleteMSTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\arjai\\Source\\Repos\\arjain18\\SeleniumUsingCSharp\\SeleniumCompleteMSTest\\SeleniumCompleteMSTest\\SeleniumCompleteMSTest.csproj",
+        "projectUniqueName": "C:\\Users\\arjai\\source\\repos\\arjain18\\SeleniumUsingCSharp\\SeleniumCompleteMSTest\\SeleniumCompleteMSTest\\SeleniumCompleteMSTest.csproj",
         "projectName": "SeleniumCompleteMSTest",
-        "projectPath": "C:\\Users\\arjai\\Source\\Repos\\arjain18\\SeleniumUsingCSharp\\SeleniumCompleteMSTest\\SeleniumCompleteMSTest\\SeleniumCompleteMSTest.csproj",
+        "projectPath": "C:\\Users\\arjai\\source\\repos\\arjain18\\SeleniumUsingCSharp\\SeleniumCompleteMSTest\\SeleniumCompleteMSTest\\SeleniumCompleteMSTest.csproj",
         "packagesPath": "C:\\Users\\arjai\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\arjai\\Source\\Repos\\arjain18\\SeleniumUsingCSharp\\SeleniumCompleteMSTest\\SeleniumCompleteMSTest\\obj\\",
+        "outputPath": "C:\\Users\\arjai\\source\\repos\\arjain18\\SeleniumUsingCSharp\\SeleniumCompleteMSTest\\SeleniumCompleteMSTest\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\arjai\\AppData\\Roaming\\NuGet\\NuGet.Config",
